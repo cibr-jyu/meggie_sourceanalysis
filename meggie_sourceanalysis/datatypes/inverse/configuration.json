@@ -1,0 +1,7 @@
+{
+    "id": "inverse",
+    "name": "Inverse",
+    "entry": "inverse.Inverse",
+    "dir": "inverses",
+    "save_key": "inverses"
+}

@@ -1,0 +1,9 @@
+{
+    "id": "inverses",
+    "name": "Inverses",
+    "transforms": ["import_inv"],
+    "actions": ["delete"],
+    "outputs": ["inverse"],
+    "info": ["info"],
+    "translations": {"import_inv": "Import from file"}
+}

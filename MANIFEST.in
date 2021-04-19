@@ -1,0 +1,3 @@
+recursive-include meggie_sourceanalysis *
+global-exclude *.py[co]
+global-exclude __pycache__

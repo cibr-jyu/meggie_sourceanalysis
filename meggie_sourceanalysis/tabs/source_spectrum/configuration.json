@@ -1,0 +1,11 @@
+{
+    "id": "source_spectrums",
+    "name": "Source spectrums",
+    "outputs": ["source_spectrum"],
+    "transforms": ["create"],
+    "actions": ["delete",
+                "plot_spectrum"],
+    "info": ["info"],
+    "translations": {"plot_spectrum": "Plot spectrum",
+                     "source_spectrum": "Source spectrum"}
+}

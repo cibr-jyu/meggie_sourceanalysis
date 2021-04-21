@@ -1,9 +1,7 @@
-# Tabs and datatypes for source analysis. 
+# Tabs and datatypes for source analysis (work in progress)
 
 ## Short-term goals:
 
-* Import inverses
-* Generate inverses for template head
 * Implement tab and datatype for source spectrums (including batch and group averages)
 
 ## Long-term goals:

@@ -1,9 +1,10 @@
 {
     "id": "inverses",
     "name": "Inverses",
-    "transforms": ["import_inv"],
+    "transforms": ["plot_alignment", "create_default"],
     "actions": ["delete"],
     "outputs": ["inverse"],
     "info": ["info"],
-    "translations": {"import_inv": "Import from file"}
+    "translations": {"plot_alignment": "Plot alignment", 
+                     "create_default": "Create from template"}
 }

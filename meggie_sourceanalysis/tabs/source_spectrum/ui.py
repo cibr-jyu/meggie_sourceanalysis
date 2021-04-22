@@ -1,4 +1,7 @@
+import logging 
+
 from meggie.utilities.messaging import messagebox
+from meggie.utilities.messaging import exc_messagebox
 from meggie.utilities.names import next_available_name
 
 from meggie.utilities.dialogs.powerSpectrumDialogMain import PowerSpectrumDialog
@@ -9,6 +12,22 @@ from meggie_sourceanalysis.tabs.source_spectrum.controller.source_spectrum impor
 def delete(experiment, data, window):
     """ 
     """
+    subject = experiment.active_subject
+    try:
+        selected_name = data['outputs']['source_spectrum'][0]
+    except IndexError as exc:
+        return
+
+    try:
+        subject.remove(selected_name, 'source_spectrum')
+    except Exception as exc:
+        exc_messagebox(window, exc)
+
+    experiment.save_experiment_settings()
+
+    logging.getLogger('ui_logger').info('Deleted source spectrum')
+    window.initialize_ui()
+
 
 def create(experiment, data, window):
     """ Uses spectrum creation dialog from core meggie
@@ -19,7 +38,7 @@ def create(experiment, data, window):
     try:
         inv_name = data['inputs']['inverse'][0]
     except Exception as exc:
-        messagebox('Inverse need to be selected for computing source spectrums')
+        messagebox(window, 'Inverse need to be selected for computing source spectrums')
         return
 
     def handler(subject, spectrum_name, params, intervals):
@@ -39,4 +58,13 @@ def plot_spectrum(experiment, data, window):
 def info(experiment, data, window):
     """
     """
+    message = ""
+    try:
+        selected_name = data['outputs']['source_spectrum'][0]
+        meggie_spectrum = experiment.active_subject.source_spectrum[selected_name]
+
+        message += "Name: "+ str(meggie_spectrum.name) + "\n\n"
+    except Exception as exc:
+        message = ""
+    return message
 

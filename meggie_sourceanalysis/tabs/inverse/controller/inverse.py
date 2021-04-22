@@ -44,7 +44,10 @@ def create_default(subject, name, cov=None):
     # Create meggie inverse object container
     # and fill it with the inv operator
     inv_directory = subject.inverse_directory
-    params = {}
+    params = {
+        'lambda2': 0.1,
+        'method': 'dSPM'
+    }
     meggie_inv = Inverse(name, inv_directory, params=params, content=inv)
     meggie_inv.save_content()
 

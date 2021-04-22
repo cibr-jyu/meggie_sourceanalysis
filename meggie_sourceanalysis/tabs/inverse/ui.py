@@ -23,6 +23,8 @@ def plot_alignment(experiment, data, window):
     fs_dir = mne.datasets.fetch_fsaverage(verbose=False)
     subjects_dir = os.path.dirname(fs_dir)
 
+    logging.getLogger('ui_logger').info('Plotting alignment..')
+
     mne.viz.plot_alignment(info=raw.info,
                            trans='fsaverage',
                            subject='fsaverage',

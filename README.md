@@ -1,10 +1,17 @@
-# Tabs and datatypes for source analysis (work in progress)
+# Tabs and datatypes for source analysis in Meggie (work in progress)
 
-## Short-term goals:
+## Currently implemented:
+* Plotting alignment
+* Creating simple inverses for fsaverage template head
+* Creating spectrums in source space
+* Plotting spectrums with plot\_source\_estimates
 
-* Implement tab and datatype for source spectrums (including batch and group averages)
+## TODO:
+* Noise covariance estimation
+* Better inverse support (real MRI, batching, other options)
+* Group averages and permutation tests for spectrums
+* Creation, plotting, group averages and permutation tests for evoked
+* Creation, plotting, group averages and permutation tests for TFR
 
-## Long-term goals:
-
-* Implement tabs for source epochs, source evoked and source TFR.
-* Implement datatypes for source epochs, source evoked and source TFR.
+## Contributions
+Help appreciated!

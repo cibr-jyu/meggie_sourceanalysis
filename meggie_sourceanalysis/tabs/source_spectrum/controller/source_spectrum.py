@@ -8,17 +8,10 @@ import mne
 import numpy as np
 import matplotlib.pyplot as plt
 
-import meggie.utilities.filemanager as filemanager
-
 from meggie_sourceanalysis.datatypes.source_spectrum.source_spectrum import SourceSpectrum
 
 from meggie.utilities.decorators import threaded
 from meggie.utilities.events import get_raw_blocks_from_intervals
-from meggie.utilities.validators import assert_arrays_same
-from meggie.utilities.formats import format_floats
-from meggie.utilities.plotting import color_cycle
-from meggie.utilities.units import get_power_unit
-from meggie.utilities.decorators import threaded
 
 
 @threaded
@@ -32,7 +25,11 @@ def create_source_spectrum(subject, spectrum_name, params, intervals, inv_name):
     raw = subject.get_raw()
     info = raw.info
 
-    meggie_inv = subject.inverse[inv_name]
+    try:
+        meggie_inv = subject.inverse[inv_name]
+    except KeyError as exc:
+        raise Exception("Missing " + inv_name)
+
     inv = meggie_inv.content
 
     picks = mne.pick_types(info, meg=True, eeg=True,
@@ -54,7 +51,7 @@ def create_source_spectrum(subject, spectrum_name, params, intervals, inv_name):
             stc_psd = mne.minimum_norm.compute_source_psd(
                 raw_block, inv, lambda2=lambda2, method=method,
                 fmin=fmin, fmax=fmax, n_fft=nfft, overlap=overlap,
-                pick_ori=None, dB=False, return_sensor=False)
+                pick_ori=None, dB=False, return_sensor=False, verbose=False)
 
             freqs = stc_psd.times
 

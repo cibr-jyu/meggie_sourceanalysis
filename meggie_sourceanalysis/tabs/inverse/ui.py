@@ -70,7 +70,7 @@ def delete(experiment, data, window):
 
     experiment.save_experiment_settings()
 
-    logging.getLogger('ui_logger').info('Deleted selected inverse')
+    logging.getLogger('ui_logger').info('Deleted inverse: ' + selected_name)
 
     window.initialize_ui()
 
@@ -92,6 +92,11 @@ def info(experiment, data, window):
         message += "Source space: \n"
         message += "LH: " + str(len(inv['src'][0]['vertno'])) + ' vertices' + '\n'
         message += "RH: " + str(len(inv['src'][1]['vertno'])) + ' vertices' + '\n'
+
+        message += "\n"
+
+        message += "lambda2: " + str(meggie_inv.params['lambda2']) + "\n"
+        message += "Method: " + str(meggie_inv.params['method']) + "\n"
 
     except Exception as exc:
         message = ""

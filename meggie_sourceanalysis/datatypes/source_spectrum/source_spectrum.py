@@ -45,8 +45,6 @@ class SourceSpectrum(object):
         self._params = params
 
     def save_content(self):
-        """
-        """
         try:
             for key, psd_stc in self._content.items():
                 psd_stc.save(
@@ -56,8 +54,6 @@ class SourceSpectrum(object):
             raise IOError('Writing spectrums failed')
 
     def delete_content(self):
-        """
-        """
         deleted_paths = []
         for key, _ in self.content.items():
             deleted_paths.append(os.path.join(self._path, self._name + '_' + 

@@ -1,5 +1,7 @@
 import logging 
 
+import numpy as np
+
 from meggie.utilities.messaging import messagebox
 from meggie.utilities.messaging import exc_messagebox
 from meggie.utilities.names import next_available_name
@@ -64,7 +66,11 @@ def plot_spectrum(experiment, data, window):
 
     for key, stc in stcs.items():
         logging.getLogger('ui_logger').info('Plotting ' + str(key))
-        stc.plot(time_label=("%0.2f Hz"), hemi='both')
+
+        # scale to avoid overflows
+        stc_copy = stc.copy()
+        stc_copy.data = stc_copy.data / np.max(np.abs(stc_copy.data))
+        stc_copy.plot(time_label=("%0.2f Hz"), hemi='both')
 
 def info(experiment, data, window):
     """

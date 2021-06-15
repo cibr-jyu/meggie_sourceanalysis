@@ -4,6 +4,6 @@
     "tab_presets": [
         {"id": "source_level_analysis", 
          "text": "Source level analysis", 
-         "tabs": ["preprocessing", "inverses", "source_spectrums"]}
+         "tabs": ["preprocessing", "covariances", "inverses", "source_spectrums"]}
     ]
 }

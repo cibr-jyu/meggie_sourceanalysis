@@ -1,0 +1,9 @@
+{
+    "id": "covariances",
+    "name": "Covariances",
+    "transforms": ["create"],
+    "actions": ["delete"],
+    "outputs": ["covariance"],
+    "info": ["info"],
+    "translations": {"create": "Create covariance"}
+}

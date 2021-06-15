@@ -1,0 +1,7 @@
+{
+    "id": "covariance",
+    "name": "Covariance",
+    "entry": "covariance.Covariance",
+    "dir": "covariances",
+    "save_key": "covariances"
+}

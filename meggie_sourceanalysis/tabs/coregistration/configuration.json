@@ -1,0 +1,7 @@
+{
+    "id": "coregistration",
+    "name": "Coregistration",
+    "transforms": ["coregister"],
+    "outputs": ["coregistration"],
+    "info": ["info"]
+}

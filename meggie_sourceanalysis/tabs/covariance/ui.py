@@ -3,16 +3,18 @@ import os
 
 import mne
 
+from meggie_sourceanalysis.datatypes.covariance.covariance import Covariance
+
+from meggie.utilities.dialogs.simpleDialogMain import SimpleDialog
+
 from meggie.utilities.messaging import messagebox
 from meggie.utilities.messaging import exc_messagebox
-
-from meggie_sourceanalysis.tabs.covariance.controller.covariance import create_covariance
 
 from meggie.utilities.decorators import threaded
 from meggie.utilities.names import next_available_name
 
 
-def create(experiment, data, window):
+def create_ad_hoc(experiment, data, window):
     """
     """
     active_subject = experiment.active_subject
@@ -20,7 +22,20 @@ def create(experiment, data, window):
     covs = active_subject.covariance.keys()
     name = next_available_name(covs, 'Cov')
 
-    logging.getLogger('ui_logger').info('Create clicked')
+    def handler(subject, name):
+        info = subject.get_raw(preload=False).info
+        cov = mne.cov.make_ad_hoc_cov(info)
+
+        meggie_cov = Covariance(name, 
+                                subject.covariance_directory, 
+                                {}, 
+                                content=cov)
+        meggie_cov.save_content()
+        subject.add(meggie_cov, 'covariance')
+
+    dialog = SimpleDialog(experiment, window, name, handler,
+                          title='Create ad hoc covariance')
+    dialog.show()
 
 
 def delete(experiment, data, window):

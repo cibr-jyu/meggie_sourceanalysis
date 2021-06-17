@@ -1,0 +1,7 @@
+{
+    "id": "coregistration",
+    "name": "Coregistration",
+    "entry": "coregistration.Coregistration",
+    "dir": "coregistrations",
+    "save_key": "coregistrations"
+}

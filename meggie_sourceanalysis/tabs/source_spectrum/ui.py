@@ -64,13 +64,15 @@ def plot_spectrum(experiment, data, window):
 
     stcs = meggie_spectrum.content
 
+    subjects_dir = meggie_spectrum.params['subjects_dir']
+
     for key, stc in stcs.items():
         logging.getLogger('ui_logger').info('Plotting ' + str(key))
 
         # scale to avoid overflows
         stc_copy = stc.copy()
         stc_copy.data = stc_copy.data / np.max(np.abs(stc_copy.data))
-        stc_copy.plot(time_label=("%0.2f Hz"), hemi='both')
+        stc_copy.plot(time_label=("%0.2f Hz"), hemi='both', subjects_dir=subjects_dir)
 
 def info(experiment, data, window):
     """

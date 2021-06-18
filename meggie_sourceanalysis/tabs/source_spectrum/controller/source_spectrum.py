@@ -88,6 +88,7 @@ def create_source_spectrum(subject, spectrum_name, params, intervals, inv_name):
     params['conditions'] = [elem for elem in psd_groups.keys()]
     params['intervals'] = ival_times
     params['fs_subject'] = fs_subject
+    params['subjects_dir'] = meggie_inv.params['subjects_dir']
 
     spectrum = SourceSpectrum(spectrum_name, subject.source_spectrum_directory,
                               params, psd_data)

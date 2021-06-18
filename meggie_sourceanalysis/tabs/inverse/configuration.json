@@ -1,10 +1,9 @@
 {
     "id": "inverses",
     "name": "Inverses",
-    "transforms": ["plot_alignment", "create_default"],
+    "transforms": ["create"],
     "actions": ["delete"],
+    "inputs": ["covariance", "coregistration"],
     "outputs": ["inverse"],
-    "info": ["info"],
-    "translations": {"plot_alignment": "Plot alignment", 
-                     "create_default": "Create from template"}
+    "info": ["info"]
 }

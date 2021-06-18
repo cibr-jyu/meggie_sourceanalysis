@@ -78,6 +78,12 @@ def coregister_default(experiment, window, subject, name):
     def on_close():
         # In the case that no scaling was done, and no freesurfer subject
         # was created, copy fsaverage directory and rename it properly
+
+        if not os.path.exists(os.path.join(coreg_dir, subject.name + '-trans.fif')):
+            logging.getLogger('ui_logger').info('Coregistration utility was closed without saving.')
+            shutil.rmtree(coreg_dir)
+            return
+
         if not os.path.exists(os.path.join(subjects_dir, subject.name)):
             shutil.copytree(os.path.join(subjects_dir, 'fsaverage'),
                             os.path.join(subjects_dir, subject.name))
@@ -94,7 +100,8 @@ def coregister_default(experiment, window, subject, name):
 
         # And then create a meggie coregistration object.
         params = {}
-        coreg = Coregistration(name, coreg_dir, params)
+        path = subject.coregistration_directory
+        coreg = Coregistration(name, path, params)
         coreg.save_content()
         subject.add(coreg, 'coregistration')
 

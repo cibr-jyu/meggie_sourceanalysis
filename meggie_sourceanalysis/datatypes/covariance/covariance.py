@@ -1,6 +1,9 @@
 import os
 import logging
 
+import numpy as np
+import mne
+
 from mne.cov import write_cov
 from mne.cov import read_cov
 
@@ -19,7 +22,16 @@ class Covariance(object):
         if self._content:
             return self._content
 
-        self._content = read_cov(self._path) 
+        cov = read_cov(self._path) 
+
+        # read_cov cannot handle the ad hoc cov..
+        fixed_cov = mne.Covariance(cov['data'].astype(np.float64), 
+                                   cov['names'], 
+                                   cov['bads'], 
+                                   cov['projs'], 
+                                   cov['nfree'])
+
+        self._content = fixed_cov
         return self._content
 
     @property

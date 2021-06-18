@@ -6,7 +6,9 @@ import mne
 from meggie.utilities.messaging import messagebox
 from meggie.utilities.messaging import exc_messagebox
 
-from meggie_sourceanalysis.tabs.inverse.controller.inverse import create_default as create_def
+from meggie_sourceanalysis.tabs.inverse.controller.inverse import create_inverse
+
+from meggie.utilities.dialogs.simpleDialogMain import SimpleDialog
 
 from meggie.utilities.decorators import threaded
 from meggie.utilities.names import next_available_name
@@ -33,25 +35,38 @@ def plot_alignment(experiment, data, window):
                            eeg='projected')
 
 
-def create_default(experiment, data, window):
+def create(experiment, data, window):
     """
     """
     active_subject = experiment.active_subject
 
     invs = active_subject.inverse.keys()
-    name = next_available_name(invs, 'Inv')
+    inv_name = next_available_name(invs, 'Inv')
 
-    @threaded
-    def threaded_create():
-        try:
-            create_def(active_subject, name)
-            logging.getLogger('ui_logger').info('Created default inverse with name ' + name)
-        except Exception as exc:
-            logging.getLogger('ui_logger').exception('')
+    try:
+        cov_name = data['inputs']['covariance'][0]
+    except IndexError as exc:
+        return
 
-    threaded_create(do_meanwhile=window.update_ui)
-    experiment.save_experiment_settings()
-    window.initialize_ui()
+    try:
+        coreg_name = data['inputs']['coregistration'][0]
+    except IndexError as exc:
+        return
+
+    def handler(subject, name):
+        @threaded
+        def threaded_create():
+            try:
+                create_inverse(subject, name, cov_name, coreg_name)
+                logging.getLogger('ui_logger').info('Created inverse with name ' + name)
+            except Exception as exc:
+                logging.getLogger('ui_logger').exception('')
+
+        threaded_create(do_meanwhile=window.update_ui)
+
+    dialog = SimpleDialog(experiment, window, inv_name, handler,
+                          title='Create inverse', batching=True)
+    dialog.show()
 
 
 def delete(experiment, data, window):

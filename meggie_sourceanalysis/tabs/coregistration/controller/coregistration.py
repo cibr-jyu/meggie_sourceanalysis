@@ -9,10 +9,12 @@ import mne
 
 from meggie.utilities.messaging import messagebox
 
+from meggie_sourceanalysis.datatypes.coregistration.coregistration import Coregistration
+
 
 def _open_mne_coreg(window, on_close, trans_path, raw_path, 
                     subject_to, subjects_dir):
-    """
+    """ Opens mne coreg with some small changes.
     """
     # Add on_close handler to coreg GUI with a monkey patch.
     # Pull requests welcome for a proper way.
@@ -47,13 +49,18 @@ def _open_mne_coreg(window, on_close, trans_path, raw_path,
     mne.gui._coreg_gui.NewMriDialog = NewMriDialogWrapper
 
     # Open the mne coregistration UI
+    open_message = ("An external coregistration GUI is now opened. You should "
+                    "fit the digization points to the scalp and then click save "
+                    "on the right panel.")
+    messagebox(window, open_message)
+
     logging.getLogger('ui_logger').info('Opening coregistration utility.')
     frame = mne.gui.coregistration(inst=raw_path,
                                    subject='fsaverage',
                                    subjects_dir=subjects_dir)
 
 
-def coregister_default(window, subject, name):
+def coregister_default(experiment, window, subject, name):
 
     coreg_dir = os.path.join(subject.coregistration_directory, name)
     subjects_dir = os.path.join(coreg_dir, 'subjects')
@@ -86,6 +93,13 @@ def coregister_default(window, subject, name):
                     os.rename(dirpath, new_dirpath)
 
         # And then create a meggie coregistration object.
+        params = {}
+        coreg = Coregistration(name, coreg_dir, params)
+        coreg.save_content()
+        subject.add(coreg, 'coregistration')
+
+        experiment.save_experiment_settings()
+        window.initialize_ui()
 
     trans_path = os.path.join(coreg_dir, subject.name + '-trans.fif')
     _open_mne_coreg(window, on_close, trans_path, subject.raw_path, 

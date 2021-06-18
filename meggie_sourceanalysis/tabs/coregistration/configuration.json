@@ -2,6 +2,7 @@
     "id": "coregistration",
     "name": "Coregistration",
     "transforms": ["coregister"],
+    "actions": ["delete"],
     "outputs": ["coregistration"],
     "info": ["info"]
 }

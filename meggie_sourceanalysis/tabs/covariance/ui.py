@@ -20,7 +20,7 @@ def create_ad_hoc(experiment, data, window):
     active_subject = experiment.active_subject
 
     covs = active_subject.covariance.keys()
-    name = next_available_name(covs, 'Cov')
+    cov_name = next_available_name(covs, 'Cov')
 
     def handler(subject, name):
         info = subject.get_raw(preload=False).info
@@ -33,7 +33,7 @@ def create_ad_hoc(experiment, data, window):
         meggie_cov.save_content()
         subject.add(meggie_cov, 'covariance')
 
-    dialog = SimpleDialog(experiment, window, name, handler,
+    dialog = SimpleDialog(experiment, window, cov_name, handler,
                           title='Create ad hoc covariance')
     dialog.show()
 

@@ -1,24 +1,19 @@
 import os
+import shutil
 import logging
 
 
 class Coregistration(object):
+    """ Takes care of params and files related to a coregistration.
     """
-    """
-    def __init__(self, name, path, params, content=None):
+    def __init__(self, name, path, params):
         self._name = name
-        self._content = content
         self._path = path
         self._params = params
 
     @property
     def content(self):
-        if self._content:
-            return self._content
-
-        self._content = None
-
-        return self._content
+        return None
 
     @property
     def name(self):
@@ -37,16 +32,14 @@ class Coregistration(object):
         self._params = params
 
     def save_content(self):
-        """
-        """
-        try:
-            pass
-        except Exception as exc:
-            logging.getLogger('ui_logger').exception('')
-            raise IOError('Writing covariance failed')
+        """ Placeholder for saving content. Currently all files are created
+        into folders already. """
+        pass
 
     def delete_content(self):
+        """ Deletes the files from fs.
         """
-        """
-        pass
+        if os.path.exists(self._path):
+            shutil.rmtree(self._path)
+
 

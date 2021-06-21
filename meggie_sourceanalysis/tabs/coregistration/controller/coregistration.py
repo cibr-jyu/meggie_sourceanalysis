@@ -12,17 +12,19 @@ from meggie.utilities.messaging import messagebox
 from meggie_sourceanalysis.datatypes.coregistration.coregistration import Coregistration
 
 
+original_coreg_close = mne.gui._coreg_gui.CoregFrameHandler.close
+
+
 def _open_mne_coreg(window, on_close, trans_path, raw_path, 
                     subject_to, subjects_dir):
     """ Opens mne coreg with some small changes.
     """
     # Add on_close handler to coreg GUI with a monkey patch.
     # Pull requests welcome for a proper way.
-    original = mne.gui._coreg_gui.CoregFrameHandler.close
     def close_wrapper(self, info, is_ok):
         logging.getLogger('ui_logger').info('Coregistration utility closed.')
         on_close()
-        return original(self, info, is_ok)
+        return original_coreg_close(self, info, is_ok)
     mne.gui._coreg_gui.CoregFrameHandler.close = close_wrapper
 
     # To avoid asking user unnecessary questions, we will 

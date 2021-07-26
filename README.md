@@ -22,7 +22,7 @@ Currently only via setuptools i.e:
 2. cd to root directory
 3. Run: python setup.py install
 
-Depends on meggie>=1.1.1.
+Depends on meggie==1.1.1.
 
 ## Contributions
 

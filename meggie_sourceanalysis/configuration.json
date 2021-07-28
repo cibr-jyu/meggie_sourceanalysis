@@ -1,9 +1,38 @@
 {
-    "name": "meggie_sourceanalysis",
-    "description": "Tabs and datatypes for source analysis",
-    "tab_presets": [
-        {"id": "source_level_analysis", 
-         "text": "Source level analysis", 
-         "tabs": ["preprocessing", "coregistration", "covariances", "inverses", "source_spectrums"]}
+    "id": "meggie_sourceanalysis",
+    "name": "A plugin providing source analysis functions",
+    "author": "CIBR",
+    "tabs": [
+        {"id": "coregistration",
+         "name": "Coregistration",
+         "input_actions": ["coregistration_coregister"],
+         "output_actions": ["coregistration_delete"],
+         "outputs": ["coregistration"],
+         "info": ["coregistration_info"]},
+        {"id": "covariance",
+         "name": "Covariances",
+         "input_actions": ["covariance_create"],
+         "output_actions": ["covariance_delete"],
+         "outputs": ["covariance"],
+         "info": ["covariance_info"]},
+        {"id": "inverse", 
+         "name": "Inverses",
+         "input_actions": ["inverse_create"],
+         "output_actions": ["inverse_delete"],
+         "inputs": ["covariance", "coregistration"],
+         "outputs": ["inverse"],
+         "info": ["inverse_info"]},
+        {"id": "source_spectrum",
+         "name": "Source spectrums",
+         "input_actions": ["source_spectrum_create"],
+         "output_actions": ["source_spectrum_delete", "source_spectrum_plot"],
+         "inputs": ["inverse"],
+         "outputs": ["source_spectrum"],
+         "info": ["source_spectrum_info"]}
+    ],
+    "pipelines": [
+        {"id": "spectrum_source",
+         "name": "Source-level continuous data analysis",
+         "include_tabs": ["preprocessing", "coregistration", "covariance", "inverse", "source_spectrum"]}
     ]
 }

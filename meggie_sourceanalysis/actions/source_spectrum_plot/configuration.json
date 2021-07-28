@@ -1,0 +1,5 @@
+{
+    "id": "source_spectrum_plot",
+    "name": "Plot spectrum",
+    "entry": "PlotSpectrum"
+}

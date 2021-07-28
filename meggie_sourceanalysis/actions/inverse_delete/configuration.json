@@ -1,0 +1,5 @@
+{
+    "id": "inverse_delete",
+    "name": "Delete inverse",
+    "entry": "DeleteInverse"
+}

@@ -1,9 +1,0 @@
-{
-    "id": "inverses",
-    "name": "Inverses",
-    "transforms": ["create"],
-    "actions": ["delete"],
-    "inputs": ["covariance", "coregistration"],
-    "outputs": ["inverse"],
-    "info": ["info"]
-}

@@ -1,0 +1,5 @@
+{
+    "id": "source_spectrum_delete",
+    "name": "Delete spectrum",
+    "entry": "DeleteSpectrum"
+}

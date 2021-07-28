@@ -1,0 +1,5 @@
+{
+    "id": "covariance_create",
+    "name": "Create ad hoc cov",
+    "entry": "CreateCovariance"
+}

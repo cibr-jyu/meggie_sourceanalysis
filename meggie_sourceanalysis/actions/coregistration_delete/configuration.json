@@ -1,0 +1,5 @@
+{
+    "id": "coregistration_delete",
+    "name": "Delete coregistration",
+    "entry": "DeleteCoregistration"
+}

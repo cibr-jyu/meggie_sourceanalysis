@@ -44,8 +44,8 @@ class Inverse(object):
         try:
             write_inverse_operator(self._path, self.content)
         except Exception as exc:
-            logging.getLogger('ui_logger').exception('')
-            raise IOError('Writing inverse failed')
+            raise IOError("Writing inverse failed. Please ensure that the "
+                          "entire experiment folder has write permissions.")
 
     def delete_content(self):
         """

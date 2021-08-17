@@ -11,7 +11,7 @@ from meggie.mainwindow.dynamic import subject_action
 
 
 class DeleteCovariance(Action):
-    """
+    """ Deletes covariance items
     """
 
     def run(self):

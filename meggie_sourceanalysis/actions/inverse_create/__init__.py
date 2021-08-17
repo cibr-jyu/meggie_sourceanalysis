@@ -3,7 +3,7 @@
 import os 
 
 from meggie.utilities.names import next_available_name
-from meggie.utilities.decorators import threaded
+from meggie.utilities.threading import threaded
 
 from meggie.utilities.messaging import exc_messagebox
 
@@ -16,6 +16,8 @@ from meggie_sourceanalysis.actions.inverse_create.controller.inverse import crea
 
 
 class CreateInverse(Action):
+    """ Creates inverse items based on covariances and coregistrations
+    """
 
     def run(self):
 

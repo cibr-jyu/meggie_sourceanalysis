@@ -1,4 +1,4 @@
-"""
+""" Contains code for wrapping coregistration utility inside Meggie.
 """
 import logging
 import os

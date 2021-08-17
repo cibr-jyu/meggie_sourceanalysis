@@ -1,3 +1,5 @@
+""" Contains implementation for creating source spectrums
+"""
 import os
 import logging
 
@@ -10,13 +12,13 @@ import matplotlib.pyplot as plt
 
 from meggie_sourceanalysis.datatypes.source_spectrum.source_spectrum import SourceSpectrum
 
-from meggie.utilities.decorators import threaded
+from meggie.utilities.threading import threaded
 from meggie.utilities.events import get_raw_blocks_from_intervals
 
 
 @threaded
 def create_source_spectrum(subject, params):
-    """
+    """ Creates source spectrum items.
     """
     spectrum_name = params['name']
     intervals = params['intervals']
@@ -26,8 +28,6 @@ def create_source_spectrum(subject, params):
     fmax = params['fmax']
     nfft = params['nfft']
     overlap = params['overlap'] / float(nfft)
-
-
 
     # get raw objects organized with average groups as keys
     ival_times, raw_block_groups = get_raw_blocks_from_intervals(subject,

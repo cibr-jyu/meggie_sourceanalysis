@@ -56,8 +56,8 @@ class Covariance(object):
         try:
             write_cov(self._path, self.content)
         except Exception as exc:
-            logging.getLogger('ui_logger').exception('')
-            raise IOError('Writing covariance failed')
+            raise Exception("Writing covariance failed. Please ensure that the "
+                            "entire experiment folder has write permissions.")
 
     def delete_content(self):
         """

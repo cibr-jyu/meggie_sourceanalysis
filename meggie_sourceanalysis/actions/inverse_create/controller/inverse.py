@@ -1,4 +1,4 @@
-"""
+""" Contains implementation for inverse item creation
 """
 import os
 

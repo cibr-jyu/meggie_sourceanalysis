@@ -17,6 +17,8 @@ from meggie.utilities.dialogs.simpleDialogMain import SimpleDialog
 
 
 class CreateCovariance(Action):
+    """ Creates ad hoc covariance items
+    """
 
     def run(self):
 
@@ -44,6 +46,5 @@ class CreateCovariance(Action):
         meggie_cov.save_content()
         subject.add(meggie_cov, "covariance")
 
-        self.experiment.save_experiment_settings()
         self.window.initialize_ui()
 

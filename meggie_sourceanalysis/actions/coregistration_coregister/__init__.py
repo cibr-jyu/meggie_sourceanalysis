@@ -15,6 +15,8 @@ from meggie_sourceanalysis.actions.coregistration_coregister.controller.coregist
 
 
 class Coregister(Action):
+    """ Opens mne coregistration utility.
+    """
 
     def run(self):
 

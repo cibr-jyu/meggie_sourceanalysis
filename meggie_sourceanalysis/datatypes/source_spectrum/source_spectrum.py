@@ -49,9 +49,9 @@ class SourceSpectrum(object):
             for key, psd_stc in self._content.items():
                 psd_stc.save(
                     os.path.join(self._path, self._name + '_' + str(key)))
-        except Expcetion as exc:
-            logging.getLogger('ui_logger').exception('')
-            raise IOError('Writing spectrums failed')
+        except Exception as exc:
+            raise IOError("Writing spectrums failed. Please ensure that the "
+                          "entire experiment folder has write permissions.")
 
     def delete_content(self):
         deleted_paths = []

@@ -3,7 +3,6 @@
 import os 
 
 from meggie.utilities.names import next_available_name
-from meggie.utilities.decorators import threaded
 
 from meggie.utilities.messaging import exc_messagebox
 
@@ -16,6 +15,8 @@ from meggie_sourceanalysis.actions.source_spectrum_create.controller.source_spec
 
 
 class CreateSpectrum(Action):
+    """ Creates source spectrum items.
+    """
 
     def run(self):
 

@@ -1,7 +1,7 @@
-# Tabs and datatypes for source analysis in Meggie (work in progress)
+# Pipelines, actions and datatypes for source analysis in Meggie (work in progress)
 
 ## Currently implemented:
-* Tabs and datatypes for coregistrations, covariances, inverses and source spectrums
+* Actions and datatypes for coregistrations, covariances, inverses and source spectrums
 * Coregistration tab uses mne coreg to create trans files.
 * Covariance tab has currently only ad hoc cov (diagonal).
 * Inverse tab combines coregistrations and covariances to create inverses (via fwd).
@@ -9,21 +9,20 @@
 * All in all, almost full pipeline for continuous source-space data analysis.
 
 ## TODO:
-* Permutation tests and data saving for spectrums
-* Evoked (SourceEpochs and SourceEvoked datatypes and tabs needed)
-* TFR (SourceEpochs and SourceTFR datatypes and tabs needed)
+* Finishing the pipeline for continuous data analysis.
+* Evoked (SourceEpochs and SourceEvoked actions and datatypes needed)
+* TFR (SourceEpochs and SourceTFR actions and datatypes needed)
 * Covariance estimation
 
 ## Installation:
 
-Currently only via setuptools i.e:
+1. Activate the meggie environment
+1. Install: python -m pip install meggie\_sourceanalysis
 
-1. Clone the repository
-2. cd to root directory
-3. Run: python setup.py install
+## Usage:
 
-Depends on meggie==1.1.1.
+If everything went fine, meggie should now recognize the plugin and you can enable it from the settings.
 
-## Contributions
+## Contributions:
 
-Help appreciated!
+Help very much appreciated.

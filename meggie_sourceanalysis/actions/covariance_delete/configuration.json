@@ -1,5 +1,5 @@
 {
     "id": "covariance_delete",
-    "name": "Delete covariance",
+    "name": "Delete",
     "entry": "DeleteCovariance"
 }

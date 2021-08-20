@@ -1,6 +1,6 @@
 {
     "id": "source_spectrum",
-    "name": "SourceSpectrum",
+    "name": "Source spectrum",
     "entry": "source_spectrum.SourceSpectrum",
     "dir": "source_spectrums",
     "save_key": "source_spectrums"

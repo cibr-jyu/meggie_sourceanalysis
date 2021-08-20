@@ -11,7 +11,7 @@ from meggie.utilities.messaging import messagebox
 
 from meggie_sourceanalysis.datatypes.coregistration.coregistration import Coregistration
 
-
+from mne.gui import _coreg_gui
 original_coreg_close = mne.gui._coreg_gui.CoregFrameHandler.close
 
 

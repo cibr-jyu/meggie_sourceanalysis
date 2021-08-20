@@ -26,7 +26,8 @@ class Coregister(Action):
         coreg_name = next_available_name(subject.coregistration.keys(), "Coreg")
 
         dialog = SimpleDialog(self.experiment, self.window,
-                              coreg_name, self.handler, title='Create coregistration')
+                              coreg_name, self.handler, batching=False,
+                              title='Create coregistration')
         dialog.show()
 
 

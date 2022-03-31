@@ -1,12 +1,17 @@
 Changelog
 =========
 
-0.2.2 (unreleased)
+0.2.3 (unreleased)
 -----------------
 
 - nothing changed yet
 
-0.2.1 (unreleased)
+0.2.2 (2022-03-31)
+-----------------
+
+- Make mne 1.0-compatible.
+
+0.2.1 (2021-08-20)
 -----------------
 
 - Add missing mayavi and pysurfer dependencies to setup.py

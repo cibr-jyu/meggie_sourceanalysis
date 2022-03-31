@@ -11,55 +11,31 @@ from meggie.utilities.messaging import messagebox
 
 from meggie_sourceanalysis.datatypes.coregistration.coregistration import Coregistration
 
-from mne.gui import _coreg_gui
-original_coreg_close = mne.gui._coreg_gui.CoregFrameHandler.close
 
-
-def _open_mne_coreg(window, on_close, trans_path, raw_path, 
-                    subject_to, subjects_dir):
+def _open_mne_coreg(window, on_close, raw_path, 
+                    subjects_dir):
     """ Opens mne coreg with some small changes.
     """
-    # Add on_close handler to coreg GUI with a monkey patch.
-    # Pull requests welcome for a proper way.
-    def close_wrapper(self, info, is_ok):
-        logging.getLogger('ui_logger').info('Coregistration utility closed.')
-        on_close()
-        return original_coreg_close(self, info, is_ok)
-    mne.gui._coreg_gui.CoregFrameHandler.close = close_wrapper
-
-    # To avoid asking user unnecessary questions, we will 
-    # also monkey patch two dialogs in mne coreg code.
-    save_message = "The coregistration will now be saved. You may close the window when finished."
-
-    class FileDialogWrapper:
-        def __init__(self, *args, **kwargs):
-            self.return_code = 10
-            self.path = trans_path
-        def open(self):
-            messagebox(window, save_message)
-    mne.gui._coreg_gui.FileDialog = FileDialogWrapper
-
-    class NewMriDialogWrapper:
-        def __init__(self, *args, **kwrags):
-            self.subject_to = subject_to
-        
-        def edit_traits(self, *args, **kwargs):
-            def returnable():
-                pass
-            returnable.result = True
-            return returnable
-    mne.gui._coreg_gui.NewMriDialog = NewMriDialogWrapper
 
     # Open the mne coregistration UI
     open_message = ("An external coregistration GUI is now opened. You should "
                     "fit the digization points to the scalp and then click save "
-                    "on the right panel.")
+                    "on the right panel. The trans file should be saved as "
+                    "`experiment_folder`/`subject_name`/coregistrations/"
+                    "`coreg_name`/`subject_name`-trans.fif")
     messagebox(window, open_message)
 
     logging.getLogger('ui_logger').info('Opening coregistration utility.')
-    frame = mne.gui.coregistration(inst=raw_path,
-                                   subject='fsaverage',
-                                   subjects_dir=subjects_dir)
+    gui = mne.gui.coregistration(inst=raw_path,
+                                 subject='fsaverage',
+                                 subjects_dir=subjects_dir)
+
+    def close_wrapper(*args, **kwargs):
+        if not gui._accept_close_event:
+            return
+        logging.getLogger('ui_logger').info('Coregistration utility closed.')
+        on_close()
+    gui._renderer._window_close_connect(close_wrapper)
 
 
 def coregister_default(experiment, window, subject, name):
@@ -78,11 +54,14 @@ def coregister_default(experiment, window, subject, name):
     shutil.copytree(fs_dir, os.path.join(subjects_dir, 'fsaverage'))
 
     def on_close():
-        # In the case that no scaling was done, and no freesurfer subject
-        # was created, copy fsaverage directory and rename it properly
 
         if not os.path.exists(os.path.join(coreg_dir, subject.name + '-trans.fif')):
-            logging.getLogger('ui_logger').info('Coregistration utility was closed without saving.')
+            logging.getLogger('ui_logger').info(
+                "Coregistration utility was closed without saving or "
+                "the trans file was saved to a wrong location. "
+                "The trans file should be saved as "
+                "`experiment_folder`/`subject_name`/coregistrations/"
+                "`coreg_name`/`subject_name`-trans.fif")
             shutil.rmtree(coreg_dir)
             return
 
@@ -110,7 +89,6 @@ def coregister_default(experiment, window, subject, name):
         experiment.save_experiment_settings()
         window.initialize_ui()
 
-    trans_path = os.path.join(coreg_dir, subject.name + '-trans.fif')
-    _open_mne_coreg(window, on_close, trans_path, subject.raw_path, 
-                    subject.name, subjects_dir)
+    _open_mne_coreg(window, on_close, subject.raw_path, 
+                    subjects_dir)
 

@@ -9,7 +9,9 @@ setup(
     zip_safe=False,
     install_requires=[
         'meggie>=1.3.0',
-        'mayavi',
-        'pysurfer'
+        'mne>=1.0.0',
+        'pyvistaqt',
+        'pysurfer',
+        'traitlets'
     ]
 )

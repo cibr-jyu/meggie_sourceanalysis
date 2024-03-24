@@ -1,5 +1,6 @@
 {
     "id": "coregistration_info",
     "name": "Coregistration info",
-    "entry": "Info"
+    "entry": "Info",
+    "description": "Extract information about the selected coregistration object."
 }

@@ -1,5 +1,6 @@
 {
     "id": "coregistration_delete",
     "name": "Delete",
-    "entry": "DeleteCoregistration"
+    "entry": "DeleteCoregistration",
+    "description": "Permanently remove the selected coregistration object from the current subject."
 }

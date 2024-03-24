@@ -1,5 +1,6 @@
 {
     "id": "inverse_create",
     "name": "Create inverse",
-    "entry": "CreateInverse"
+    "entry": "CreateInverse",
+    "description": "Compute the inverse transformation object based on the covariance and the coregistration object."
 }

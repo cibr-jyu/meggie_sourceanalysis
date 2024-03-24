@@ -1,5 +1,6 @@
 {
     "id": "source_spectrum_create",
     "name": "Create spectrum",
-    "entry": "CreateSpectrum"
+    "entry": "CreateSpectrum",
+    "description": "Compute a spectral decomposition in source space at specified time intervals for the current subject."
 }

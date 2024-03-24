@@ -1,5 +1,6 @@
 {
     "id": "inverse_info",
     "name": "Inverse info",
-    "entry": "Info"
+    "entry": "Info",
+    "description": "Extract information about the selected inverse transformation object."
 }

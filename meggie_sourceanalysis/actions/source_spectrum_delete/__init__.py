@@ -1,8 +1,5 @@
 """ Contains implementation for delete source spectrum
 """
-import logging
-
-import numpy as np
 
 from meggie.utilities.messaging import exc_messagebox
 
@@ -11,20 +8,19 @@ from meggie.mainwindow.dynamic import subject_action
 
 
 class DeleteSpectrum(Action):
-    """ Deletes source spectrum items
-    """
+    """Deletes source spectrum items"""
 
     def run(self):
 
         subject = self.experiment.active_subject
 
         try:
-            selected_name = self.data['outputs']['source_spectrum'][0]
-        except IndexError as exc:
+            selected_name = self.data["outputs"]["source_spectrum"][0]
+        except IndexError:
             return
 
         try:
-            self.handler(subject, {'name': selected_name})
+            self.handler(subject, {"name": selected_name})
             self.experiment.save_experiment_settings()
         except Exception as exc:
             exc_messagebox(self.window, exc)
@@ -34,5 +30,4 @@ class DeleteSpectrum(Action):
 
     @subject_action
     def handler(self, subject, params):
-        subject.remove(params['name'], 'source_spectrum')
-
+        subject.remove(params["name"], "source_spectrum")

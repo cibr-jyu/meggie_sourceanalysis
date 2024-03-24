@@ -1,6 +1,8 @@
 {
     "id": "meggie_sourceanalysis",
-    "name": "A plugin providing source analysis functions",
+    "name": "Source analysis",
+    "description": "Provide actions and datatypes for source analysis",
+    "publish": false,
     "author": "CIBR",
     "tabs": [
         {"id": "coregistration",

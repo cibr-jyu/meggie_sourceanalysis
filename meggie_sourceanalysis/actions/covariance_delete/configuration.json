@@ -1,5 +1,6 @@
 {
     "id": "covariance_delete",
     "name": "Delete",
-    "entry": "DeleteCovariance"
+    "entry": "DeleteCovariance",
+    "description": "Permanently remove the selected covariance object from the current subject."
 }

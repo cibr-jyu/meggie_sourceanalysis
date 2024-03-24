@@ -1,5 +1,4 @@
 import os
-import logging
 
 import numpy as np
 import mne
@@ -9,12 +8,12 @@ from mne.cov import read_cov
 
 
 class Covariance(object):
-    """
-    """
+    """ """
+
     def __init__(self, name, cov_directory, params, content=None):
         self._name = name
         self._content = content
-        self._path = os.path.join(cov_directory, name + '-cov.fif')
+        self._path = os.path.join(cov_directory, name + "-cov.fif")
         self._params = params
 
     @property
@@ -22,14 +21,16 @@ class Covariance(object):
         if self._content:
             return self._content
 
-        cov = read_cov(self._path) 
+        cov = read_cov(self._path)
 
         # read_cov cannot handle the ad hoc cov..
-        fixed_cov = mne.Covariance(cov['data'].astype(np.float64), 
-                                   cov['names'], 
-                                   cov['bads'], 
-                                   cov['projs'], 
-                                   cov['nfree'])
+        fixed_cov = mne.Covariance(
+            cov["data"].astype(np.float64),
+            cov["names"],
+            cov["bads"],
+            cov["projs"],
+            cov["nfree"],
+        )
 
         self._content = fixed_cov
         return self._content
@@ -51,16 +52,15 @@ class Covariance(object):
         self._params = params
 
     def save_content(self):
-        """
-        """
+        """ """
         try:
             write_cov(self._path, self.content)
-        except Exception as exc:
-            raise Exception("Writing covariance failed. Please ensure that the "
-                            "entire experiment folder has write permissions.")
+        except Exception:
+            raise Exception(
+                "Writing covariance failed. Please ensure that the "
+                "entire experiment folder has write permissions."
+            )
 
     def delete_content(self):
-        """
-        """
+        """ """
         os.remove(self._path)
-

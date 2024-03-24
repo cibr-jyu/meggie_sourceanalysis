@@ -1,5 +1,6 @@
 {
     "id": "inverse_delete",
     "name": "Delete",
-    "entry": "DeleteInverse"
+    "entry": "DeleteInverse",
+    "description": "Permanently remove the selected inverse transformation object from the current subject."
 }

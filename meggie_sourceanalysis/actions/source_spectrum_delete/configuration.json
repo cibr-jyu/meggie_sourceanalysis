@@ -1,5 +1,6 @@
 {
     "id": "source_spectrum_delete",
     "name": "Delete",
-    "entry": "DeleteSpectrum"
+    "entry": "DeleteSpectrum",
+    "description": "Permanently remove the selected source-space spectrum object from the current subject."
 }

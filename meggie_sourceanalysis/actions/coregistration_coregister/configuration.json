@@ -1,5 +1,6 @@
 {
     "id": "coregistration_coregister",
     "name": "Coregister",
-    "entry": "Coregister"
+    "entry": "Coregister",
+    "description": "Create a coregistration with MNE's Coreg utility."
 }

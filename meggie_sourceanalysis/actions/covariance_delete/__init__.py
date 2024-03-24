@@ -1,8 +1,5 @@
 """ Contains implementation for delete covariance
 """
-import logging
-
-import numpy as np
 
 from meggie.utilities.messaging import exc_messagebox
 
@@ -11,20 +8,19 @@ from meggie.mainwindow.dynamic import subject_action
 
 
 class DeleteCovariance(Action):
-    """ Deletes covariance items
-    """
+    """Deletes covariance items"""
 
     def run(self):
 
         subject = self.experiment.active_subject
 
         try:
-            selected_name = self.data['outputs']['covariance'][0]
-        except IndexError as exc:
+            selected_name = self.data["outputs"]["covariance"][0]
+        except IndexError:
             return
 
         try:
-            self.handler(subject, {'name': selected_name})
+            self.handler(subject, {"name": selected_name})
         except Exception as exc:
             exc_messagebox(self.window, exc)
             return
@@ -34,5 +30,4 @@ class DeleteCovariance(Action):
 
     @subject_action
     def handler(self, subject, params):
-        subject.remove(params['name'], 'covariance')
-
+        subject.remove(params["name"], "covariance")

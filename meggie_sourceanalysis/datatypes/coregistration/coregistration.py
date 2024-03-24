@@ -1,11 +1,10 @@
 import os
 import shutil
-import logging
 
 
 class Coregistration(object):
-    """ Takes care of params and files related to a coregistration.
-    """
+    """Takes care of params and files related to a coregistration."""
+
     def __init__(self, name, path, params):
         self._name = name
         self._path = path
@@ -37,22 +36,19 @@ class Coregistration(object):
 
     @property
     def subjects_dir(self):
-        return os.path.join(self._path, self._name, 'subjects')
+        return os.path.join(self._path, self._name, "subjects")
 
     @property
     def trans_path(self):
         subject_name = os.path.basename(os.path.dirname(self._path))
-        return os.path.join(self._path, self._name, subject_name + '-trans.fif')
+        return os.path.join(self._path, self._name, subject_name + "-trans.fif")
 
     def save_content(self):
-        """ Placeholder for saving content. Currently all files are created
-        into folders already. """
+        """Placeholder for saving content. Currently all files are created
+        into folders already."""
         pass
 
     def delete_content(self):
-        """ Deletes the files from fs.
-        """
+        """Deletes the files from fs."""
         if os.path.exists(self._path):
             shutil.rmtree(self._path)
-
-

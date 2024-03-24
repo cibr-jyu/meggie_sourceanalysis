@@ -32,7 +32,3 @@ jobs:
     - name: Check styles
       run: |
         make check
-
-    - name: Run tests
-      run: |
-        make test

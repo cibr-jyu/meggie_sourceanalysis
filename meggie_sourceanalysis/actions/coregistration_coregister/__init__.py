@@ -21,6 +21,16 @@ from meggie.utilities.messaging import messagebox
 class Coregister(Action):
     """Opens mne coregistration utility."""
 
+    def get_trans_path(self, subject, params):
+        path = os.path.join(
+            self.window.experiment.path,
+            subject.name,
+            "coregistrations",
+            params["name"],
+            subject.name + "-trans.fif",
+        )
+        return path
+
     def coreg_utility_handler(self, subject, params):
         name = params["name"]
 
@@ -45,11 +55,11 @@ class Coregister(Action):
 
         # Open the mne coregistration UI
         open_message = (
-            "An external coregistration GUI is now opened. You should "
-            "fit the digization points to the scalp and then click save "
-            "on the right panel. The trans file should be saved as "
-            "`experiment_folder`/`subject_name`/coregistrations/"
-            "`coreg_name`/`subject_name`-trans.fif"
+            "The external coregistration GUI is now open. Please "
+            + "align the digitization points with the scalp and then click 'Save' "
+            + "in the right panel. Save the transformation file as "
+            + self.get_trans_path(subject, params)
+            + "."
         )
         messagebox(self.window, open_message)
 
@@ -96,11 +106,11 @@ class Coregister(Action):
 
         if not os.path.exists(os.path.join(coreg_dir, subject.name + "-trans.fif")):
             logging.getLogger("ui_logger").info(
-                "Coregistration utility was closed without saving or "
-                "the trans file was saved to a wrong location. "
-                "The trans file should be saved as "
-                "`experiment_folder`/`subject_name`/coregistrations/"
-                "`coreg_name`/`subject_name`-trans.fif"
+                "The coregistration utility was closed without saving, or "
+                + "the transformation file was saved to an incorrect location. "
+                + "Please ensure the transformation file is saved as "
+                + self.get_trans_path(subject, params)
+                + "."
             )
             shutil.rmtree(coreg_dir)
             return

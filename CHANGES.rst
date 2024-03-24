@@ -1,10 +1,18 @@
 Changelog
 =========
 
-0.2.3 (unreleased)
+0.2.4 (unreleased)
 -----------------
 
 - nothing changed yet
+
+0.2.3 (2024-03-24)
+-----------------
+
+- Remove unnecessary mayavi and pysurfer dependencies from setup.py
+- Add metadata to configuration.json-files to get tooltips.
+- Add codestyle-checks.
+- Refactor coregistration action.
 
 0.2.2 (2022-03-31)
 -----------------

@@ -1,28 +1,30 @@
-# Pipelines, actions and datatypes for source analysis in Meggie (work in progress)
+# Meggie Source Analysis Plugin (Proof of Concept)
 
-## Currently implemented:
-* Actions and datatypes for coregistrations, covariances, inverses and source spectrums
-* Coregistration tab uses mne coreg to create trans files.
-* Covariance tab has currently only ad hoc cov (diagonal).
-* Inverse tab combines coregistrations and covariances to create inverses (via fwd).
-* Source spectrums can be created with compute\_source\_psd and plotted with plot\_source\_estimates
-* All in all, almost full pipeline for continuous source-space data analysis.
+This is a proof of concept plugin for source analysis in Meggie. It's in development and not ready for general use. Feedback and contributions are welcome.
 
-## TODO:
-* Finishing the pipeline for continuous data analysis.
-* Evoked (SourceEpochs and SourceEvoked actions and datatypes needed)
-* TFR (SourceEpochs and SourceTFR actions and datatypes needed)
-* Covariance estimation
+## Current Status
+
+### Implemented
+- [x] Coregistration with MNE coreg for trans files
+- [x] Ad hoc covariance calculation (diagonal only)
+- [x] Inverse solutions using coregistrations and covariances
+- [x] Source power spectral density (PSD) computation and visualization
+
+These features form a basic pipeline for continuous source-space data analysis.
+
+### To Do
+- [ ] Complete pipeline for continuous data
+- [ ] Add SourceEpochs and SourceEvoked actions and datatypes
+- [ ] Add SourceEpochs and SourceTFR for time-frequency analysis
+- [ ] Improve covariance estimation methods
 
 ## Installation:
 
 1. Activate the meggie environment
-1. Install: python -m pip install meggie\_sourceanalysis
-
-## Usage:
+2. Install: python -m pip install meggie\_sourceanalysis
 
 If everything went fine, meggie should now recognize the plugin and you can enable it from the settings.
 
-## Contributions:
+## Note
 
-Help very much appreciated.
+This plugin is a work in progress, and we're aware of its limitations. If you have any suggestions or would like to help, please let us know.

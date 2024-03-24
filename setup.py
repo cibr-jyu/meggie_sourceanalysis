@@ -11,7 +11,7 @@ setup(
         'meggie>=1.3.0',
         'mne>=1.0.0',
         'pyvistaqt',
-        'pysurfer',
+        'nibabel',
         'traitlets'
     ]
 )

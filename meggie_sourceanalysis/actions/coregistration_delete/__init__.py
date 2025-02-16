@@ -1,5 +1,4 @@
-""" Contains implementation for delete coregistration
-"""
+"""Contains implementation for delete coregistration"""
 
 from meggie.utilities.messaging import exc_messagebox
 

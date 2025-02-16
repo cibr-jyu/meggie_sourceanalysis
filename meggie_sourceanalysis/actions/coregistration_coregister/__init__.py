@@ -1,5 +1,4 @@
-""" Contains create coregistration action handling.
-"""
+"""Contains create coregistration action handling."""
 
 import os
 import shutil

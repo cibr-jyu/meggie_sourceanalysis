@@ -1,5 +1,4 @@
-""" Contains implementation for inverse info
-"""
+"""Contains implementation for inverse info"""
 
 import os
 

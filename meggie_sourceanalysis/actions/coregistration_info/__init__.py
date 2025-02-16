@@ -1,5 +1,4 @@
-""" Contains implementation for coregistration info
-"""
+"""Contains implementation for coregistration info"""
 
 from meggie.mainwindow.dynamic import InfoAction
 

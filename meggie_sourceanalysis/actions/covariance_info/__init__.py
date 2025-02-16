@@ -1,5 +1,4 @@
-""" Contains implementation for covariance info
-"""
+"""Contains implementation for covariance info"""
 
 from meggie.mainwindow.dynamic import InfoAction
 

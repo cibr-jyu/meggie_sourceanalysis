@@ -1,5 +1,4 @@
-""" Contains create covariance action handling.
-"""
+"""Contains create covariance action handling."""
 
 import mne
 

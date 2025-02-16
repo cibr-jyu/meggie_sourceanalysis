@@ -1,5 +1,4 @@
-""" Contains implementation for delete covariance
-"""
+"""Contains implementation for delete covariance"""
 
 from meggie.utilities.messaging import exc_messagebox
 

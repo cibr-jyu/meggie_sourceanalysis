@@ -1,5 +1,4 @@
-""" Contains implementation for creating source spectrums
-"""
+"""Contains implementation for creating source spectrums"""
 
 from copy import deepcopy
 from collections import OrderedDict

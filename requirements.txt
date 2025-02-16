@@ -1,0 +1,3 @@
+pyvistaqt
+nibabel
+traitlets

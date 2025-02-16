@@ -1,5 +1,4 @@
-""" Contains implementation for delete inverse
-"""
+"""Contains implementation for delete inverse"""
 
 from meggie.utilities.messaging import exc_messagebox
 

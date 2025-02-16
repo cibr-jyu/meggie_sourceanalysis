@@ -1,5 +1,4 @@
-""" Contains implementation for inverse item creation
-"""
+"""Contains implementation for inverse item creation"""
 
 import os
 

@@ -1,5 +1,4 @@
-""" Contains implementation for source spectrum info
-"""
+"""Contains implementation for source spectrum info"""
 
 from meggie.utilities.formats import format_float
 

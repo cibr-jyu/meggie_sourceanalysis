@@ -1,5 +1,4 @@
-""" Contains implementation for source spectrum plot
-"""
+"""Contains implementation for source spectrum plot"""
 
 import logging
 

@@ -1,5 +1,4 @@
-""" Contains create inverse action handling.
-"""
+"""Contains create inverse action handling."""
 
 from meggie.utilities.names import next_available_name
 from meggie.utilities.threading import threaded

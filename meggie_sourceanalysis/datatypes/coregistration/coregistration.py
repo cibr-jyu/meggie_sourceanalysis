@@ -40,6 +40,7 @@ class Coregistration(object):
 
     @property
     def trans_path(self):
+        # should probably have a better way..
         subject_name = os.path.basename(os.path.dirname(self._path))
         return os.path.join(self._path, self._name, subject_name + "-trans.fif")
 

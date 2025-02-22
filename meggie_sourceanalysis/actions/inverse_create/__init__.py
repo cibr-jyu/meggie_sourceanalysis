@@ -16,7 +16,7 @@ from meggie_sourceanalysis.actions.inverse_create.controller.inverse import (
 class CreateInverse(Action):
     """Creates inverse items based on covariances and coregistrations"""
 
-    def run(self):
+    def run(self, params={}):
 
         subject = self.experiment.active_subject
 
@@ -57,3 +57,4 @@ class CreateInverse(Action):
             )
 
         threaded_create(do_meanwhile=self.window.update_ui)
+        self.experiment.save_experiment_settings()

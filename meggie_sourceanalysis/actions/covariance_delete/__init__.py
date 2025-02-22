@@ -9,7 +9,7 @@ from meggie.mainwindow.dynamic import subject_action
 class DeleteCovariance(Action):
     """Deletes covariance items"""
 
-    def run(self):
+    def run(self, params={}):
 
         subject = self.experiment.active_subject
 
@@ -24,9 +24,9 @@ class DeleteCovariance(Action):
             exc_messagebox(self.window, exc)
             return
 
-        self.experiment.save_experiment_settings()
         self.window.initialize_ui()
 
     @subject_action
     def handler(self, subject, params):
         subject.remove(params["name"], "covariance")
+        self.experiment.save_experiment_settings()

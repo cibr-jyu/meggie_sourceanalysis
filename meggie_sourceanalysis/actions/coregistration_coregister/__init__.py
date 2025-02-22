@@ -73,12 +73,11 @@ class Coregister(Action):
             logging.getLogger("ui_logger").info("Coregistration utility closed.")
             self.handler(subject, params)
 
-            self.experiment.save_experiment_settings()
             self.window.initialize_ui()
 
         gui._renderer._window_close_connect(close_wrapper)
 
-    def run(self):
+    def run(self, params={}):
 
         subject = self.experiment.active_subject
 
@@ -144,3 +143,4 @@ class Coregister(Action):
         coreg = Coregistration(name, path, params)
         coreg.save_content()
         subject.add(coreg, "coregistration")
+        self.experiment.save_experiment_settings()

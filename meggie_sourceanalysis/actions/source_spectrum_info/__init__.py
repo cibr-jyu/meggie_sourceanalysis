@@ -8,7 +8,7 @@ from meggie.mainwindow.dynamic import InfoAction
 class Info(InfoAction):
     """Fills up source spectrum info box"""
 
-    def run(self):
+    def run(self, params={}):
         message = ""
         try:
             selected_name = self.data["outputs"]["source_spectrum"][0]

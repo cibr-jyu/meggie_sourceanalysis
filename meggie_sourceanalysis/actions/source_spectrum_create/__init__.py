@@ -15,7 +15,7 @@ from meggie_sourceanalysis.actions.source_spectrum_create.controller.source_spec
 class CreateSpectrum(Action):
     """Creates source spectrum items."""
 
-    def run(self):
+    def run(self, params={}):
 
         subject = self.experiment.active_subject
 
@@ -39,3 +39,4 @@ class CreateSpectrum(Action):
     def handler(self, subject, params):
         """ """
         create_source_spectrum(subject, params, do_meanwhile=self.window.update_ui)
+        self.experiment.save_experiment_settings()

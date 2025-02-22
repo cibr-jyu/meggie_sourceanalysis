@@ -9,7 +9,7 @@ from meggie.mainwindow.dynamic import subject_action
 class DeleteCoregistration(Action):
     """Deletes coregistration with a selected name"""
 
-    def run(self):
+    def run(self, params={}):
 
         subject = self.experiment.active_subject
 
@@ -20,7 +20,6 @@ class DeleteCoregistration(Action):
 
         try:
             self.handler(subject, {"name": selected_name})
-            self.experiment.save_experiment_settings()
         except Exception as exc:
             exc_messagebox(self.window, exc)
             return
@@ -30,3 +29,4 @@ class DeleteCoregistration(Action):
     @subject_action
     def handler(self, subject, params):
         subject.remove(params["name"], "coregistration")
+        self.experiment.save_experiment_settings()

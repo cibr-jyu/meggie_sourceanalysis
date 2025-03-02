@@ -7,7 +7,5 @@ setup(
     packages=['meggie_sourceanalysis'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-        'meggie>=1.9.0',
-    ]
+    install_requires=[]
 )

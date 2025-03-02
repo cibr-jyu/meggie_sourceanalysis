@@ -1,3 +1,4 @@
+meggie>=1.9.0
 pyvistaqt
 nibabel
 traitlets

@@ -21,7 +21,8 @@ These features form a basic pipeline for continuous source-space data analysis.
 ## Installation:
 
 1. Activate the meggie environment
-2. Install: python -m pip install meggie\_sourceanalysis
+2. Install deps: python -m pip install pyvistaqt nibabel traitlets
+3. Install: python -m pip install meggie\_sourceanalysis
 
 If everything went fine, meggie should now recognize the plugin and you can enable it from the settings.
 

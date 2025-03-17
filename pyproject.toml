@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meggie_sourceanalysis"
+version = "0.2.4"
+description = "Source analysis plugin for Meggie"
+license = { text = "BSD" }
+dependencies = [
+    "meggie>=1.9.0",
+    "pyvistaqt",
+    "nibabel",
+    "traitlets"
+]
+
+[project.urls]
+homepage = "https://github.com/cibr-jyu/meggie_sourceanalysis"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pylama",
+    "pytest",
+    "pytest-qt",
+    "build",
+    "twine",
+    "setuptools",
+]
+test = [
+    "black",
+    "pylama",
+    "pytest",
+    "pytest-qt",
+    "setuptools",
+]

@@ -1,10 +1,10 @@
 .PHONY: format
 format:
-	black -t py39 meggie_sourceanalysis
+	black meggie_sourceanalysis
 
 .PHONY: check
 check:
-	black --check -t py39 meggie_sourceanalysis
+	black --check meggie_sourceanalysis
 	pylama meggie_sourceanalysis
 
 .PHONY: test

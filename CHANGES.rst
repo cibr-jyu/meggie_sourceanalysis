@@ -1,10 +1,16 @@
 Changelog
 =========
 
-0.2.4 (unreleased)
+0.2.5 (unreleased)
 -----------------
 
 - nothing changed yet
+
+0.2.4 (2025-03-17)
+-----------------
+
+- Add first test
+- Migrate to pyproject.toml
 
 0.2.3 (2024-03-24)
 -----------------
